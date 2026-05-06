@@ -19,4 +19,9 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      - name: node --version
+        run: node --version
+      - name: pnpm exec node --version
+        run: pnpm exec node --version
+
       - run: pnpm run build
