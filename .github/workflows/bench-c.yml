@@ -1,0 +1,22 @@
+name: bench-C (minimal)
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  bench:
+    name: C iter ${{ matrix.iter }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        iter: [ 1, 2, 3 ]
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - run: corepack enable
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm run build
